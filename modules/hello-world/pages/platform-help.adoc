@@ -1,0 +1,119 @@
+= Setting Up Couchbase Go SDK with VSCode
+:page-aliases: ROOT:platform-introduction,ROOT:platform-help,
+:navtitle: Setting Up the Go SDK
+
+[abstract]
+Discover how to get up and running developing applications with the Couchbase Go SDK 2.0+ using `Visual Studio Code`. 
+
+
+A simple Go orientation intro for non-Go folk who are evaluating the Couchbase Go SDK.
+
+[IMPORTANT]
+.Is This Page for You?
+====
+This page is to help evaluate the Couchbase Go SDK, if Go is not where you spend the majority of your working day. 
+It is aimed at Software Architects, QE folk, managers, and anyone else who needs to run through using the Go SDK without necessarily being comfortable with the language.
+If this is not you, head back to the xref:overview.adoc[rest of the Couchbase Go SDK documentation].
+====
+
+== Installing Go
+To get up and running with Go you can use your preferred package manager or follow the instructions +
+provided here to install the latest version: https://golang.org/dl.
+
+You can verify Go is installed by running `go version` in your terminal.
+
+
+== Using a Code Editor (Visual Studio Code)
+
+Visual Studio Code is a free code editor which runs on Windows, Linux and MacOS and can be downloaded link:https://code.visualstudio.com/[here]. Once downloaded, follow the installation details for the relevant platform:
+
+* MacOS: https://code.visualstudio.com/docs/setup/mac
+* Windows: https://code.visualstudio.com/docs/setup/windows
+* Linux: https://code.visualstudio.com/docs/setup/linux
+
+=== Adding Go Development Support
+
+VSCode is an editor, so in order to have support for various languages like Go, C#, Python, etc. you will need to install a 3rd party extension which supports development in said programming language. +
+For link:https://code.visualstudio.com/docs/languages/go[Go], we suggest using `golang.Go`.
+
+* Navigate to https://marketplace.visualstudio.com/items?itemName=golang.go
+* Click on `Install` at the top, left hand side.
+* Select `Open Visual Studio Code` which will install `golang.Go` into the VSCode editor
+* Alternatively, install from VSCode directly:
+    - Open VSCode
+    - Select the `Extensions` button on the left hand side
+    - Type golang.Go into the `Search Extensions Marketplace` textbox and hit enter
+    - Select and install the language extension into the editor.
+
+
+== Getting started with the SDK
+
+When using VSCode it is often easier to use both the editor and the Command Line Interface (CLI). 
+Open a terminal and make a directory for your project:
+[source, bash]
+----
+mkdir CouchbaseExample
+cd CouchbaseExample
+----
+
+[TIP]
+.Go Modules
+In the past, Go projects would have to be created inside the $GOPATH, which is an environment variable that points to the directory where your Go workspace exists. From v1.11 onwards Go modules were introduced; this allows you to manage your project dependencies with ease and to create a project in any directory (without the need of a $GOPATH).
+More information about Go modules can be found link:https://github.com/golang/go/wiki/Modules[here].
+
+Enable Go modules by setting the environment variable `GO111MODULE=on` in your terminal:
+
+* For Linux/MacOS: `export GO111MODULE=on`
+
+* For Windows: `set GO111MODULE=on`
+
+You can verify this is enabled by running `go env`, which will show you the list of environment variables set for Go.
+[source, bash]
+----
+GO111MODULE="on"
+GOARCH="amd64"
+GOBIN=""
+...
+----
+
+With Go modules successfully enabled, you can now initialize your project by running this command in the terminal:
+[source, bash]
+----
+go mod init github.com/your-name
+----
+
+Note that the module name `github.com/your-name` doubles as the import path, which allows internal imports to be resolved inside the module.
+
+This creates a `go.mod` file in your `CouchbaseExample` directory.
+
+=== Hello World
+Launch VSCode and open the `CouchbaseExample` directory; you should see a file explorer on the left hand side.
+
+Click the `go.mod` file that we generated in the previous section. The file contains your module name and Go version for the project (this will be the same as what is installed on your machine). So for example if you have installed Go `1.15` you should see the same version in your `go.mod` file:
+----
+module github.com/your-name 
+
+go 1.15
+----
+
+Create a `main.go` file and copy this code snippet:
+[source, go]
+----
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("Hello World")
+}
+----
+
+Run `go run main.go` in your terminal to execute your application.
+You should see a `Hello World` message returned in your console, which means the application has run successfully. 
+
+To learn more about Go you can follow the official `A Tour of Go` page: https://tour.golang.org/list.
+
+That's it! You are now ready to xref:start-using-sdk.adoc[start developing your Couchbase application].
+

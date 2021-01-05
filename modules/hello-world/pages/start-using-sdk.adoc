@@ -13,6 +13,8 @@ The Go 2.0 SDK also introduces improved error handling providing extra error inf
 
 If you're upgrading your application from Couchbase Go SDK 1.x, please read our xref:project-docs:migrating-sdk-code-to-3.n.adoc[Migration Guide].
 
+Go to our xref:platform-help.adoc[Platform Introduction] if you don't already have an editor setup for working in Go -- e.g. you are evaluating the Go SDK, but Go is not your normal platform.
+
 
 == Installing the SDK
 
